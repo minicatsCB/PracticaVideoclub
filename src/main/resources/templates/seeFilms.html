@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>See Film</title>
+	</head>
+	<body>
+		<h1>See film</h1>
+		<p>Films in list: </p>
+		<p th:each="film : ${films}">
+			<a th:href="@{/show(id=${film.id})}" th:text="|${film.title} ${film.Year}|">Link</a>
+		</p>
+	</body>
+</html>
