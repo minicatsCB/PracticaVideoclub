@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -39,6 +40,18 @@ public class ApplicationController{
 		repo.save(film2);
 		System.out.println("From processFilmForm: " + repo.findAll());
 		return new ModelAndView("redirect:/adminFilms");
+	}
+	
+	@RequestMapping("/searchFilm")
+	public ModelAndView searchFilm(){
+		return new ModelAndView("searchFilm");
+	}
+	
+	@RequestMapping("/searchFilmForm")
+	public ModelAndView searchFilmForm(@RequestParam String title, RedirectAttributes redirectAttributes){
+		System.out.println("From searchFilmForm: " + repo.findByTitle(title));
+		redirectAttributes.addAttribute("films" , repo.findByTitle(title));
+		return new ModelAndView("redirect:/seeFilms");
 	}
 	
 	@RequestMapping("/seeFilms")

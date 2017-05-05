@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Search Film</title>
+	</head>
+	<body>
+		<h1>Search Film</h1>
+		<p>Search a film by title, choose the correct one and edit it</p>
+		<form th:action="@{/searchFilmForm}" method="post">
+		Title: <input type="text" name="title"></input><br></br>
+		<input type="submit" value="Submit"></input>
+		</form>
+	</body>
+</html>
