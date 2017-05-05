@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>New Film</title>
+	</head>
+	<body>
+		<h1>New Film</h1>
+		<form th:action="@{/processFilmForm}" method="post">
+		Title: <input type="text" name="title"></input><br></br>
+		Year: <input type="text" name="year"></input><br></br>
+		<input type="submit" value="Submit"></input>
+		</form>
+	</body>
+</html>
