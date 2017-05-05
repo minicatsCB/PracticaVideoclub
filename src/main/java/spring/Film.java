@@ -17,6 +17,7 @@ public class Film {
   @SerializedName("Title")
   private String title;
 
+  private String Content;
   private String Year;
   private String Director;
   private String Actors;
@@ -39,6 +40,14 @@ public class Film {
 
   public void setTitle(String title) {
     this.title = title;
+  }
+  
+  public String getContent() {
+	    return Content;
+  }
+
+  public void setContent(String content) {
+    this.Content = content;
   }
 
   public String getYear() {

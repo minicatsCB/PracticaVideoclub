@@ -29,13 +29,13 @@ public class ApplicationController{
 	}
 	
 	@RequestMapping("/processFilmForm")
-	public ModelAndView processFilmForm(@RequestParam String title, @RequestParam String year){
+	public ModelAndView processFilmForm(@RequestParam String title, @RequestParam String content){
 		Film film1 = new Film();
 		film1.setTitle("Up");
-		film1.setYear("2010");
+		film1.setContent("www.google.es");
 		Film film2 = new Film();
 		film2.setTitle(title);
-		film2.setYear(year);
+		film2.setContent(content);
 		repo.save(film1);
 		repo.save(film2);
 		System.out.println("From processFilmForm: " + repo.findAll());
