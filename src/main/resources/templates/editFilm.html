@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Edit Film</title>
+	</head>
+	<body>
+		<p>Edit the fields you want</p>
+		<form th:action="@{/editFilmForm}" method="post">
+		Current title of the movie you want to edit: <input type="text" name="currentTitle"></input><br></br>
+		New title: <input type="text" name="newTitle"></input><br></br>
+		New content: <input type="text" name="newContent"></input><br></br>
+		<input type="submit" value="Submit"></input>
+		</form>
+	</body>
+</html>
