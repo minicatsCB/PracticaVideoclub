@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 public interface FilmRepository extends CrudRepository<Film, Long>{
-	List<Film> findByTitle(String title);
+	Film findByTitle(String title);
 	Film findById(Long id);
 	
 	@Query(value = "SELECT * FROM FILM", nativeQuery = true)
