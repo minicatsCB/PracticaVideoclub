@@ -142,23 +142,24 @@ public class ApplicationController{
 	
 	@Secured("ROLE_ADMIN")
 	@RequestMapping("/processUserForm")
-	public ModelAndView processUserForm(@RequestParam String user, @RequestParam String password, @RequestParam String role){
+	public ModelAndView processUserForm(@RequestParam String user, @RequestParam String password, @RequestParam String email, @RequestParam String role){
         GrantedAuthority[] userRoles = {
                 new SimpleGrantedAuthority(role) };
-        repoUsers.save(new User(user, password, Arrays.asList(userRoles)));
+        repoUsers.save(new User(user, password, email, Arrays.asList(userRoles)));
 		System.out.println("From processUserForm: " + repoUsers.findAll());
 		return new ModelAndView("redirect:/adminUsers");
 	}
 	
 	@Secured("ROLE_ADMIN")
 	@RequestMapping("/editUserForm")
-	public ModelAndView editUserForm(@RequestParam String currentName, @RequestParam String newName, @RequestParam String newPassword, @RequestParam String newRole){
+	public ModelAndView editUserForm(@RequestParam String currentName, @RequestParam String newName, @RequestParam String newPassword, @RequestParam String newEmail, @RequestParam String newRole){
 		User currentUser = repoUsers.findByUser(currentName);
-		System.out.println("Current user before: " + currentUser.getUser() + ", " + currentUser.getPasswordHash());
+		System.out.println("Current user before: " + currentUser.getUser() + ", " + currentUser.getPasswordHash() + ", " + currentUser.getEmail());
 		currentUser.setUser(newName);
 		currentUser.setPasswordHash(newPassword);
+		currentUser.setEmail(newEmail);
 		// Falta poner lo del user role. Pero el currentUser.setRoles() me pide como parámetro List<GrantedRoles> y yo sólo tenog GrantedRoles[] del controlador anterior
-		System.out.println("Current user after: " + currentUser.getUser() + ", " + currentUser.getPasswordHash());
+		System.out.println("Current user after: " + currentUser.getUser() + ", " + currentUser.getPasswordHash() + ", " + currentUser.getEmail());
 		// La contraseña se ha guardado bien o se ha guardado como hash?
 		repoUsers.save(currentUser);
 		return new ModelAndView("redirect:/adminUsers");
