@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Edit User</title>
+	</head>
+	<body>
+		<p>Edit the fields you want</p>
+		<form th:action="@{/editUserForm}" method="post">
+		Current name of the user you want to edit: <input type="text" name="currentName"></input><br></br>
+		New name: <input type="text" name="newName"></input><br></br>
+		New password: <input type="text" name="newPassword"></input><br></br>
+		<!-- En vez de tener que escribir el tipo de rol, poner una lista para poder elegir el rol -->
+		New role (ROLE_USER or ROLE_ADMIN): <input type="text" name="newRole"></input><br></br>
+		<input type="submit" value="Submit"></input>
+		</form>
+	</body>
+</html>

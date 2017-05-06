@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Delete User</title>
+	</head>
+	<body>
+		<form th:action="@{/deleteUserForm}" method="post">
+		Current name of the user you want to delete: <input type="text" name="currentName"></input><br></br>
+		<input type="submit" value="Submit"></input>
+		</form>
+	</body>
+</html>
