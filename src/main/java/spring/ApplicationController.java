@@ -69,6 +69,20 @@ public class ApplicationController{
 		return new ModelAndView("editFilm");
 	}
 	
+	@RequestMapping("/deleteFilmForm")
+	public ModelAndView deleteFilmForm(@RequestParam String currentTitle){
+		Film currentFilm = repo.findByTitle(currentTitle);
+		System.out.println("Current film before: " + currentFilm);
+		// Falta poner control de que sea null. Si es así, poner un mensaje por pantalla e intentar de nuevo
+		repo.delete(currentFilm);
+		return new ModelAndView("redirect:/adminFilms");
+	}
+	
+	@RequestMapping("/deleteFilm")
+	public ModelAndView deleteFilm(){
+		return new ModelAndView("deleteFilm");
+	}
+	
 	/*
 	@RequestMapping("/searchFilmFormForEdit")
 	public ModelAndView searchFilmFormForEdit(@ModelAttribute("title") final Object mapping1FormObject, final BindingResult mapping1BindingResult, final Model model, final RedirectAttributes redirectAttributes){
