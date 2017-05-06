@@ -1,5 +1,7 @@
 package spring;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,13 +32,9 @@ public class ApplicationController{
 	
 	@RequestMapping("/processFilmForm")
 	public ModelAndView processFilmForm(@RequestParam String title, @RequestParam String content){
-		Film film1 = new Film();
-		film1.setTitle("Up");
-		film1.setContent("www.google.es");
 		Film film2 = new Film();
 		film2.setTitle(title);
 		film2.setContent(content);
-		repo.save(film1);
 		repo.save(film2);
 		System.out.println("From processFilmForm: " + repo.findAll());
 		return new ModelAndView("redirect:/adminFilms");
@@ -51,8 +49,38 @@ public class ApplicationController{
 	public ModelAndView searchFilmForm(@RequestParam String title, RedirectAttributes redirectAttributes){
 		System.out.println("From searchFilmForm: " + repo.findByTitle(title));
 		redirectAttributes.addAttribute("films" , repo.findByTitle(title));
-		return new ModelAndView("redirect:/seeFilms");
+		return new ModelAndView("redirect:/seeFilms");	// Temporal <--
 	}
+	
+	@RequestMapping("/editFilmForm")
+	public ModelAndView editFilmForm(@RequestParam String currentTitle, @RequestParam String newTitle, @RequestParam String newContent){
+		Film currentFilm = repo.findByTitle(currentTitle);
+		System.out.println("Current film before: " + currentFilm);
+		// Falta poner control de que sea null. Si es así, poner un mensaje por pantalla e intentar de nuevo
+		currentFilm.setTitle(newTitle);
+		currentFilm.setContent(newContent);
+		repo.save(currentFilm);
+		System.out.println("Current film after: " + currentFilm);
+		return new ModelAndView("redirect:/adminFilms");
+	}
+	
+	@RequestMapping("/editFilm")
+	public ModelAndView editFilm(){
+		return new ModelAndView("editFilm");
+	}
+	
+	/*
+	@RequestMapping("/searchFilmFormForEdit")
+	public ModelAndView searchFilmFormForEdit(@ModelAttribute("title") final Object mapping1FormObject, final BindingResult mapping1BindingResult, final Model model, final RedirectAttributes redirectAttributes){
+		redirectAttributes.addFlashAttribute("title" , mapping1FormObject);
+		return new ModelAndView("redirect:/editFilm");
+	}
+	
+	@RequestMapping("/editFilm")
+	public ModelAndView editFilm(@ModelAttribute("title") final Object mapping1FormObject, final BindingResult mapping11BindingResult, final Model model){
+		model.addAttribute("transformationTitle", mapping1FormObject);
+		return new ModelAndView("editFilm");
+	}*/
 	
 	@RequestMapping("/seeFilms")
 	public ModelAndView seeFilms(){
