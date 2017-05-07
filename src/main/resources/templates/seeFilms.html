@@ -6,8 +6,8 @@
 	<body>
 		<h1>See film</h1>
 		<p>Films in list: </p>
-		<p th:each="film : ${films}">
-			<a th:href="@{/show(id=${film.id})}" th:text="|${film.title} ${film.Content}|">Link</a>
-		</p>
+			<p><a th:text="${film.title}">Link</a></p>
+		<iframe width="560" height="315" src="${film.Content}" frameborder="0" allowfullscreen="true"></iframe>
+		<h3><a th:href="@{/}">Back</a></h3>
 	</body>
 </html>
