@@ -59,10 +59,9 @@ public class ApplicationController{
 	
 	@Secured({"ROLE_USER", "ROLE_ADMIN"})
 	@RequestMapping("/searchFilmForm")
-	public ModelAndView searchFilmForm(@RequestParam String title, RedirectAttributes redirectAttributes){
+	public ModelAndView searchFilmForm(@RequestParam String title){
 		System.out.println("From searchFilmForm: " + repo.findByTitle(title));
-		redirectAttributes.addAttribute("films" , repo.findByTitle(title));
-		return new ModelAndView("redirect:/seeFilms");	// Temporal <--
+		return new ModelAndView("seeFilms").addObject("film", repo.findByTitle(title));
 	}
 	
 	@Secured("ROLE_ADMIN")
@@ -113,11 +112,19 @@ public class ApplicationController{
 		return new ModelAndView("editFilm");
 	}*/
 	
+	/*
 	@Secured({"ROLE_USER", "ROLE_ADMIN"})
 	@RequestMapping("/seeFilms")
 	public ModelAndView seeFilms(){
 		System.out.println("From seeFilms: " + repo.findAll());
 		return new ModelAndView("seeFilms").addObject("films", repo.findAll());
+	}*/
+	
+	@Secured({"ROLE_USER", "ROLE_ADMIN"})
+	@RequestMapping("/seeFilms")
+	public ModelAndView seeFilms(@RequestParam String title){
+		System.out.println("From seeFilms: " + repo.findByTitle(title));
+		return new ModelAndView("seeFilms").addObject("film", repo.findByTitle(title));
 	}
 	
 	
@@ -186,6 +193,5 @@ public class ApplicationController{
 	@RequestMapping("/deleteUser")
 	public ModelAndView deleteUsers(){
 		return new ModelAndView("deleteUser");
-	}
-	
+	}	
 }
