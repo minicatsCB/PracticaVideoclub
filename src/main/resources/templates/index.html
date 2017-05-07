@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 	<head>
 		<title>Index</title>
 	</head>
 	<body>
+		<h1>
+	        Hello <span sec:authentication="name">user</span>
+	    </h1>
 		<h1><a th:href="@{/searchFilm.html}">Search film</a></h1>
 		<h1><a th:href="@{seeFilms.html}">See films</a></h1>
-		<h1><a href="#">Admin users</a></h1>
-		<h1><a th:href="@{adminFilms.html}">Admin films</a></h1>
+		<div sec:authorize="hasRole('ROLE_ADMIN')">
+			<h1><a th:href="@{adminUsers}">Admin users</a></h1>
+			<h1><a th:href="@{adminFilms.html}">Admin films</a></h1>
+		</div>
+		
+		<form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out" />
+    </form>
 	</body>
 </html>
