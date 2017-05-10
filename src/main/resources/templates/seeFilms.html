@@ -7,7 +7,9 @@
 		<h1>See film</h1>
 		<p>Films in list: </p>
 			<p><a th:text="${film.title}">Link</a></p>
-		<iframe width="560" height="315" src="${film.Content}" frameborder="0" allowfullscreen="true"></iframe>
+			<p><a th:text="${film.Year}">Link</a></p>
+			<p><a th:text="${film.Director}">Link</a></p>
+		<iframe width="560" height="315" th:src="${film.Content}" frameborder="0" allowfullscreen="true"></iframe>
 		<h3><a th:href="@{/}">Back</a></h3>
 	</body>
 </html>

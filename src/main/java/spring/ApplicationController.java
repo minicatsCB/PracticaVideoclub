@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import rest.client.FilmQuery;
+import retrofit.RestAdapter;
 
 @Controller
 public class ApplicationController{
@@ -43,10 +45,12 @@ public class ApplicationController{
 	@Secured("ROLE_ADMIN")
 	@RequestMapping("/processFilmForm")
 	public ModelAndView processFilmForm(@RequestParam String title, @RequestParam String content){
-		Film film2 = new Film();
-		film2.setTitle(title);
-		film2.setContent(content);
-		repo.save(film2);
+		RestAdapter adapter = new RestAdapter.Builder().setEndpoint("http://www.omdbapi.com").build();
+	    FilmQuery service = adapter.create(FilmQuery.class);
+	    Film film = service.getFilm(title);
+	    film.setContent(content);
+	    
+	    repo.save(film);
 		System.out.println("From processFilmForm: " + repo.findAll());
 		return new ModelAndView("redirect:/adminFilms");
 	}
@@ -98,27 +102,6 @@ public class ApplicationController{
 	public ModelAndView deleteFilm(){
 		return new ModelAndView("deleteFilm");
 	}
-	
-	/*
-	@RequestMapping("/searchFilmFormForEdit")
-	public ModelAndView searchFilmFormForEdit(@ModelAttribute("title") final Object mapping1FormObject, final BindingResult mapping1BindingResult, final Model model, final RedirectAttributes redirectAttributes){
-		redirectAttributes.addFlashAttribute("title" , mapping1FormObject);
-		return new ModelAndView("redirect:/editFilm");
-	}
-	
-	@RequestMapping("/editFilm")
-	public ModelAndView editFilm(@ModelAttribute("title") final Object mapping1FormObject, final BindingResult mapping11BindingResult, final Model model){
-		model.addAttribute("transformationTitle", mapping1FormObject);
-		return new ModelAndView("editFilm");
-	}*/
-	
-	/*
-	@Secured({"ROLE_USER", "ROLE_ADMIN"})
-	@RequestMapping("/seeFilms")
-	public ModelAndView seeFilms(){
-		System.out.println("From seeFilms: " + repo.findAll());
-		return new ModelAndView("seeFilms").addObject("films", repo.findAll());
-	}*/
 	
 	@Secured({"ROLE_USER", "ROLE_ADMIN"})
 	@RequestMapping("/seeFilms")
