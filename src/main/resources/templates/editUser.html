@@ -1,18 +1,61 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Edit User</title>
-	</head>
-	<body>
+<style>
+body {
+	padding-top: 300px;
+}
+</style>
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+<link rel="icon" href="http://getbootstrap.com/favicon.ico"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Edit User</title>
+</head>
+<body>
+	<!--
 		<p>Edit the fields you want</p>
 		<form th:action="@{/editUserForm}" method="post">
 		Current name of the user you want to edit: <input type="text" name="currentName"></input><br></br>
 		New name: <input type="text" name="newName"></input><br></br>
 		New password: <input type="text" name="newPassword"></input><br></br>
 		New email: <input type="text" name="newEmail"></input><br></br>
-		<!-- En vez de tener que escribir el tipo de rol, poner una lista para poder elegir el rol -->
 		New role (ROLE_USER or ROLE_ADMIN): <input type="text" name="newRole"></input><br></br>
 		<input type="submit" value="Submit"></input>
 		</form>
-	</body>
+		-->
+	<div class="container">
+		<h2>Edit User</h2>
+		<p>Please, edit the below fields</p>
+		<form th:action="@{/editUserForm}" method="post">
+			<div class="form-group">
+				<label for="name">Current name of the user you want to edit:
+					:</label> <input type="text" class="form-control" id="name"
+					name="currentName"></input>
+			</div>
+			<div class="form-group">
+				<label for="email">New name:</label> <input type="text"
+					class="form-control" id="email" name="newName"></input>
+			</div>
+			<div class="form-group">
+				<label for="pwd">New email:</label> <input type="email"
+					class="form-control" id="pwd" name="newEmail"></input>
+			</div>
+			<div class="form-group">
+				<label for="pwd">New password :</label> <input type="password"
+					class="form-control" id="pwd" name="newPassword"></input>
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+</body>
 </html>

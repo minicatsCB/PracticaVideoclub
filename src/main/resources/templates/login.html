@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Login</title>
-	</head>
-	<body>
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+<link rel="icon" href="http://getbootstrap.com/favicon.ico"></link>
+
+<!-- Bootstrap core CSS -->
+<link href="https://getbootstrap.com/dist/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+<title>Login</title>
+</head>
+<body>
+	<!--
 		<p th:if="${param.error}">Invalid credentials</p>
 		<p th:if="${param.logout}">Logged out</p>
 		
@@ -12,5 +24,23 @@
 			<label>Password</label><input type="password" name="password"/><br/>
 			<input type="submit" value="Sign In"/><br/>
 		</form>
-	</body>
+		-->
+
+	<div class="container">
+		<p th:if="${param.error}">Invalid credentials</p>
+		<p th:if="${param.logout}">Logged out</p>
+		<form class="form-signin" th:action="@{/login}" method="post">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<label for="inputEmail" class="sr-only">Username</label>
+			<input type="text" id="inputEmail" class="form-control" placeholder="Username" name="username"></input>
+			<label for="inputPassword" class="sr-only">Password</label>
+			<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password"></input>
+			<div class="checkbox">
+				<label> <input type="checkbox" value="remember-me"></input>Remember me</label>
+			</div>
+			<input class="btn btn-lg btn-primary btn-block" type="submit">Sign in</input>
+		</form>
+	</div>
+
+</body>
 </html>

@@ -1,12 +1,90 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Admin Films</title>
-	</head>
-	<body>
-		<h1><a th:href="@{addFilm.html}">Add film</a></h1>
-		<h1><a th:href="@{editFilm.html}">Edit film</a></h1>
-		<h1><a th:href="@{deleteFilm.html}">Delete film</a></h1>
-		<h3><a th:href="@{/}">Back</a></h3>
-	</body>
+<style>
+body {
+	padding-top: 1em;
+}
+
+.card-title {
+	font-size: 5rem;
+}
+
+.card-text {
+	font-size: 3rem;
+}
+
+.btn.btn-primary {
+	font-size: 3rem;
+}
+</style>
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+<link rel="icon" href="http://getbootstrap.com/favicon.ico"></link>
+
+<!-- Bootstrap core CSS -->
+<link href="http://getbootstrap.com/dist/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+<title>Admin Films</title>
+</head>
+<body>
+	<!--
+	<h1>
+		<a th:href="@{addFilm.html}">Add film</a>
+	</h1>
+	<h1>
+		<a th:href="@{editFilm.html}">Edit film</a>
+	</h1>
+	<h1>
+		<a th:href="@{deleteFilm.html}">Delete film</a>
+	</h1>
+	<h3>
+		<a th:href="@{/}">Back</a>
+	</h3>
+	-->
+	
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-block">
+					<h3 class="card-title">Add Film</h3>
+					<p class="card-text">Add Film</p>
+					<a th:href="@{/addFilm.html}" class="btn btn-primary">Go</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-block">
+					<h3 class="card-title">Edit Film</h3>
+					<p class="card-text">Edit Film</p>
+					<a th:href="@{/editFilm.html}" class="btn btn-primary">Go</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-block">
+					<h3 class="card-title">Delete Film</h3>
+					<p class="card-text">Delete Film</p>
+					<a th:href="@{/deleteFilm.html}" class="btn btn-primary">Go</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-block">
+					<a th:href="@{/}" class="btn btn-primary" role="button"
+						style="height: 166px; width: 500px; text-align: center; line-height: 150px; font-size: 5rem;">Back</a>
+				</div>
+			</div>
+		</div>
+</body>
 </html>

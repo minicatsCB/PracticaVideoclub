@@ -1,17 +1,55 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>New User</title>
-	</head>
-	<body>
+<style>
+body {
+	padding-top: 300px;
+}
+</style>
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+<link rel="icon" href="http://getbootstrap.com/favicon.ico"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>New User</title>
+</head>
+<body>
+	<!--
 		<h1>New User</h1>
 		<form th:action="@{/processUserForm}" method="post">
 		User: <input type="text" name="user"></input><br></br>
 		Password: <input type="text" name="password"></input><br></br>
 		Email: <input type="text" name="email"></input><br></br>
-		<!-- En vez de tener que escribir el tipo de rol, poner una lista para poder elegir el rol -->
 		Role (ROLE_USER or ROLE_ADMIN): <input type="text" name="role"></input><br></br>
 		<input type="submit" value="Submit"></input>
 		</form>
-	</body>
+	-->
+	<div class="container">
+		<h2>New User</h2>
+		<p>Please, fill in the required fields</p>
+		<form th:action="@{/processUserForm}" method="post">
+			<div class="form-group">
+				<label for="name">Username:</label> <input type="text"
+					class="form-control" id="name" name="user"></input>
+			</div>
+			<div class="form-group">
+				<label for="email">Email address:</label> <input type="email"
+					class="form-control" id="email" name="email"></input>
+			</div>
+			<div class="form-group">
+				<label for="pwd">Password:</label> <input type="password"
+					class="form-control" id="pwd" name="password"></input>
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+</body>
 </html>
