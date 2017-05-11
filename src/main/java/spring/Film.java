@@ -90,11 +90,11 @@ public class Film {
     this.Plot = plot;
   }
 
-  public String getImdbrating() {
+  public String getImdbRating() {
     return imdbRating;
   }
 
-  public void setImdbrating(String imdbRating) {
+  public void setImdbRating(String imdbRating) {
     this.imdbRating = imdbRating;
   }
 

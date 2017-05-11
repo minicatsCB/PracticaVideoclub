@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Search Film</title>
-	</head>
-	<body>
+<style>
+body {
+	padding-top: 300px;
+}
+</style>
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+<link rel="icon" href="http://getbootstrap.com/favicon.ico"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Search Film</title>
+</head>
+<body>
+	<!--
 		<h1>Search Film</h1>
 		<p>Search a film by title</p>
 		<form th:action="@{/searchFilmForm}" method="post">
 		Title: <input type="text" name="title"></input><br></br>
 		<input type="submit" value="Submit"></input>
 		</form>
-	</body>
+	-->
+	<div class="container">
+		<h2>Search Film</h2>
+		<p>Search a film</p>
+		<form th:action="@{/searchFilmForm}" method="post">
+			<div class="form-group">
+				<label for="title">Title</label> <input type="text" class="form-control" id="title"
+					name="title"></input>
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+</body>
 </html>

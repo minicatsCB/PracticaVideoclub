@@ -1,15 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Edit Film</title>
-	</head>
-	<body>
-		<p>Edit the fields you want</p>
+<style>
+body {
+	padding-top: 300px;
+}
+</style>
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+<link rel="icon" href="http://getbootstrap.com/favicon.ico"></link>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Edit Film</title>
+</head>
+<body>
+	<!--
+	<p>Edit the fields you want</p>
+	<form th:action="@{/editFilmForm}" method="post">
+		Current title of the movie you want to edit: <input type="text"
+			name="currentTitle"></input><br></br> New title: <input type="text"
+			name="newTitle"></input><br></br> New content: <input type="text"
+			name="newContent"></input><br></br> <input type="submit"
+			value="Submit"></input>
+	</form>
+	-->
+	<div class="container">
+		<h2>Edit Film</h2>
+		<p>Please, edit the below fields</p>
 		<form th:action="@{/editFilmForm}" method="post">
-		Current title of the movie you want to edit: <input type="text" name="currentTitle"></input><br></br>
-		New title: <input type="text" name="newTitle"></input><br></br>
-		New content: <input type="text" name="newContent"></input><br></br>
-		<input type="submit" value="Submit"></input>
+			<div class="form-group">
+				<label for="name">Current title of the film you want to
+					edit: :</label> <input type="text" class="form-control" id="currentTitle"
+					name="currentTitle"></input>
+			</div>
+			<div class="form-group">
+				<label for="newTitle">New title:</label> <input type="text"
+					class="form-control" id="newTitle" name="newTitle"></input>
+			</div>
+			<div class="form-group">
+				<label for="newContent">New content:</label> <input type="text"
+					class="form-control" id="newContent" name="newContent"></input>
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
-	</body>
+	</div>
+</body>
 </html>

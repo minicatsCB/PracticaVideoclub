@@ -1,9 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>See Film</title>
-	</head>
-	<body>
+<style>
+body {
+	padding-top: 1em;
+	padding-left: 500px;
+}
+
+.card-title {
+	font-size: 5rem;
+}
+
+.card-text {
+	font-size: 2rem;
+}
+
+.btn.btn-primary {
+	font-size: 3rem;
+}
+
+.list-group-item {
+	font-size: 1.5rem;
+}
+</style>
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+<link rel="icon" href="http://getbootstrap.com/favicon.ico"></link>
+
+<!-- Bootstrap core CSS -->
+<link href="http://getbootstrap.com/dist/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+<title>See Film</title>
+</head>
+<body>
+	<!--
 		<h1>See film</h1>
 		<p>Films in list: </p>
 			<p><a th:text="${film.title}">Link</a></p>
@@ -11,5 +49,26 @@
 			<p><a th:text="${film.Director}">Link</a></p>
 		<iframe width="560" height="315" th:src="${film.Content}" frameborder="0" allowfullscreen="true"></iframe>
 		<h3><a th:href="@{/}">Back</a></h3>
-	</body>
+	-->
+	<div class="row">
+		<div class="card" style="width: 30rem;">
+			<img class="card-img-top" th:src="${film.Poster}"
+				alt="Card image cap"></img>
+			<div class="card-block">
+				<h4 class="card-title" th:text="${film.title}">Film title</h4>
+				<p class="card-text" th:text="${film.Plot}">Film plot.</p>
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item" th:text="${film.Year}">Year</li>
+				<li class="list-group-item" th:text="${film.Director}">Director</li>
+				<li class="list-group-item" th:text="${film.Actors}">Actors</li>
+				<li class="list-group-item" th:text="${film.imdbRating}">imdbRating</li>
+			</ul>
+		</div>
+		<div style="padding-top: 10px; padding-left: 10px">
+			<iframe width="560" height="315" th:src="${film.Content}"
+				frameborder="0" allowfullscreen="true"></iframe>
+		</div>
+	</div>
+</body>
 </html>
