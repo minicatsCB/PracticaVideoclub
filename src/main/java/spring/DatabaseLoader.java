@@ -24,13 +24,6 @@ public class DatabaseLoader {
                 new SimpleGrantedAuthority("ROLE_USER"),
                 new SimpleGrantedAuthority("ROLE_ADMIN") };
         userRepository.save(new User("root", "p2", "root@root.com",Arrays.asList(adminRoles)));
-        
-        // Film #1: "Interstellar" with some attributes
-        Film film = new Film();
-        film.setTitle("Interstellar");
-        film.setContent("https://www.youtube.com/embed/0vxOhd4qlnA?ecver=1");
-        film.setYear("2014");
-        filmRepository.save(film);
     }
 }
 
