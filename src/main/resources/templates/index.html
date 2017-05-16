@@ -121,6 +121,8 @@ body {
     </form>
    		-->
 
+
+
 	<!-- Carousel
     ================================================== -->
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -180,6 +182,9 @@ body {
 		<h1>
 			Hello <span sec:authentication="name">user</span>
 		</h1>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" />
+		</form>
 
 		<!-- Three columns of text below the carousel -->
 		<div class="row">
